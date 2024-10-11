@@ -1,0 +1,87 @@
+{
+  "backgroundColor": "#FFFFFF",
+  "borderColor": "#E0DEDE",
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "borderWidth": "1",
+  "bottomRow": 36,
+  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "defaultModel": "{{ \n\n{ \n\turl: Input1.text,\n\tqrcode: '',\n\tsource: 'user'\n}\n\n}}",
+  "displayName": "Custom",
+  "dynamicBindingPathList": [
+    {
+      "key": "theme"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "boxShadow"
+    },
+    {
+      "key": "defaultModel"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicTriggerPathList": [
+    {
+      "key": "onResetClick"
+    }
+  ],
+  "events": [
+    "onResetClick"
+  ],
+  "hideCard": false,
+  "iconSVG": "https://appcdn.appsmith.com/static/media/icon.ff37253a5ce2f5284c42ede26ce165f9.svg",
+  "isCanvas": false,
+  "isDeprecated": false,
+  "isLoading": false,
+  "isSearchWildcard": true,
+  "isVisible": true,
+  "key": "7wu8pc6emi",
+  "leftColumn": 0,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "mobileBottomRow": 42,
+  "mobileLeftColumn": 38,
+  "mobileRightColumn": 61,
+  "mobileTopRow": 12,
+  "needsErrorInfo": false,
+  "onCanvasUI": {
+    "disableParentSelection": false,
+    "focusBGCSSVar": "--on-canvas-ui-widget-focus",
+    "focusColorCSSVar": "--on-canvas-ui-widget-selection",
+    "selectionBGCSSVar": "--on-canvas-ui-widget-selection",
+    "selectionColorCSSVar": "--on-canvas-ui-widget-focus"
+  },
+  "onResetClick": "{{showAlert('Successfully reset!!', '');}}",
+  "originalBottomRow": 42,
+  "originalTopRow": 17,
+  "parentColumnSpace": 13.265625,
+  "parentId": "x384e77h4f",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "rightColumn": 38,
+  "searchTags": [
+    "external"
+  ],
+  "srcDoc": {
+    "css": ".app {\n  width: calc(1px * var(--appsmith-ui-width));\n  justify-content: center;\n  border-radius: 0px;\n  border: none;\n}\n.app .tip-container {\n  margin-bottom: 20px;\n}\n.app .tip-container h2 {\n  margin-bottom: 20px;\n  font-size: 16px;\n  font-weight: 700;\n}\n.app .tip-container .tip-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline;\n}\n.app .tip-container .tip-header div {\n  color: #999;\n}\n.app .button-container {\n  text-align: right;\n}\n.app .button-container button {\n  margin: 0 10px;\n  border-radius: var(--appsmith-theme-borderRadius) !important;\n}\n.app .button-container button.primary {\n  background: var(--appsmith-theme-primaryColor) !important;\n}\n.app .button-container button.reset:not([disabled]) {\n  color: var(--appsmith-theme-primaryColor) !important;\n  border-color: var(--appsmith-theme-primaryColor) !important;\n}",
+    "html": "<script src=\"https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js\"></script>\n\n\n<div id=\"qrcode\"></div>\n\n\n",
+    "js": "appsmith.onReady(() => {\n  const config = {\n    text: appsmith.model.url,\n    width: 128,\n    height: 128,\n    colorDark: \"#000000\",\n    colorLight: \"#ffffff\",\n    correctLevel: QRCode.CorrectLevel.H\n  };\n  var qrcode = new QRCode(\"qrcode\", config);\n  appsmith.onModelChange(() => {\n    if (appsmith.model.source === 'user') {\n      qrcode.clear();\n      qrcode.makeCode(appsmith.model.url);\n      const qrImg = document.querySelector('canvas').toDataURL('image/png');\n      const newModel = {\n        qrcode: qrImg,\n        source: 'customWidget'\n      };\n      appsmith.updateModel(newModel);\n    }\n  });\n});"
+  },
+  "tags": [
+    "Display"
+  ],
+  "theme": "{{appsmith.theme}}",
+  "thumbnailSVG": "https://appcdn.appsmith.com/static/media/thumbnail.a7d7cde44fad9a0d4d490def43560a78.svg",
+  "topRow": 11,
+  "type": "CUSTOM_WIDGET",
+  "uncompiledSrcDoc": {
+    "css": ".app {\n  width: calc(1px * var(--appsmith-ui-width));\n  justify-content: center;\n  border-radius: 0px;\n  border: none;\n  \n  .tip-container {\n    margin-bottom: 20px;\n\n    h2 {\n      margin-bottom: 20px;\n      font-size: 16px;\n      font-weight: 700;\n    }\n\n    .tip-header {\n      display: flex;\n      justify-content: space-between;\n      align-items: baseline;\n\n      div {\n        color: #999;\n      }\n    }\n  }\n\t\n\t.button-container {\n      text-align: right;\n\n      button {\n        margin: 0 10px;\n        border-radius: var(--appsmith-theme-borderRadius) !important;\n\n        &.primary {\n          background: var(--appsmith-theme-primaryColor) !important;\n        }\n\n        &.reset:not([disabled]) {\n          color: var(--appsmith-theme-primaryColor) !important;\n          border-color: var(--appsmith-theme-primaryColor) !important;\n        }\n      }\n    }\n}\n",
+    "html": "<script src=\"https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js\"></script>\n\n\n<div id=\"qrcode\"></div>\n\n\n",
+    "js": "\n\t\n\n\nappsmith.onReady(()=>{\n\t\n\t\tconst config = {\n    text: appsmith.model.url,\n    width: 128,\n    height: 128,\n    colorDark : \"#000000\",\n    colorLight : \"#ffffff\",\n    correctLevel : QRCode.CorrectLevel.H\n};\n\t\n\tvar qrcode = new QRCode(\"qrcode\", config);\t\n\t\n\t\n\tappsmith.onModelChange(()=>{\n\t\t\n\t\tif(appsmith.model.source === 'user'){\n\t\t\t\t\tqrcode.clear();\n\t\tqrcode.makeCode(appsmith.model.url);\n\t\t\t\n\t\t\tconst qrImg = document.querySelector('canvas').toDataURL('image/png')\n\t\t\t\n\t\t\tconst newModel = {\n\t\t\t\tqrcode: qrImg,\n\t\t\t\tsource: 'customWidget'\n\t\t\t};\n\t\t\tappsmith.updateModel(newModel)\n\t\t}\n\t\t\n\n\t\t\n\t})\n})"
+  },
+  "version": 1,
+  "widgetId": "jbbequnaot",
+  "widgetName": "Custom1"
+}
